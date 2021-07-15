@@ -96,24 +96,24 @@
                   this.triggering = false
                 }, 500)
               })*/
-            const data = new FormData()
+            const formData = new FormData()
             const functionName = values.functionName
-            const functionData = values.data.split(/[\s\n]/)
-            console.log(functionData[1], typeof functionData, '33333333333')
-            data.append('functionName', JSON.stringify(functionName))
-            /*data.append('Data', JSON.stringify(functionData))*/
-            for(let i = 0; i<functionData.length;i++){
+            /*const functionData = values.data.split(/[\s\n]/)*/
+            const functionData = values.data
+            formData.append('functionName', JSON.stringify(functionName))
+            formData.append('data', functionData)
+           /* for(let i = 0; i<functionData.length;i++){
               console.log(functionData[i])
               data.append( JSON.stringify(i), JSON.stringify(functionData[i]))
             }
             data.forEach((value, key) => {
               console.log("key %s: value %s", key, value);
-            })
+            })*/
             const _this = this
 
             async function onOk() {
               try {
-                await triggerFunc(functionName, data)
+                await triggerFunc(functionName, formData)
                   .then((res) => {
                     console.log('res', res, typeof res)
                     _this.triggerResult = JSON.stringify(res.data)
