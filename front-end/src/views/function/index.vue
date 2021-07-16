@@ -9,14 +9,8 @@
       v-loading="loading"
       :data="functionList"
       :onSelFunction="onSelFunction"
-      :onShowDetail="onShowDetail"
       :loadingList="loadingList"
       :onRefreshFunc="onRreshFunc"
-    />
-    <FunctionDetailVue
-      v-model="visibleDetail"
-      :currentFunctionInfo="currentFunctionInfo"
-      :loadingDetail="loadingDetail"
     />
     <TriggerVue
       v-model="visibleTrigger"
@@ -27,11 +21,9 @@
 <script>
   import Func from './components/Func.vue'
   import TriggerVue from './components/Trigger.vue'
-  import FunctionDetailVue from './components/FunctionDetail'
   import { getList, getStatus, getInfo, getStats } from '@/api/func'
   export default {
     components: {
-      FunctionDetailVue,
       Func,
       TriggerVue
     },
